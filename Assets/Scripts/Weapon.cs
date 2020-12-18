@@ -7,11 +7,19 @@ public class Weapon : MonoBehaviour
     public Transform firePoint;
     public GameObject bulletBlue;
     public GameObject bulletOrange;
-    public Animator _animator;  
+    public Animator _animator;
+    public Image gun1;
+    public Image gun2;
+
 
     private int gunNumber = 0;
     public AudioSource soundShoot;
 
+    private void Start()
+    {
+        gun1.color = new Vector4(0, 0, 0, 0);
+        gun2.color = new Vector4(0, 0, 0, 0);
+    }
 
     // Update is called once per frame
     void Update()
@@ -20,13 +28,23 @@ public class Weapon : MonoBehaviour
         _animator.SetInteger("Gun", gunNumber);
         if (Input.GetKeyDown(KeyCode.Tab))
         {        
-            if(gunNumber == 1)
+            if(gunNumber == 2)
             {
                 gunNumber = 0;
+                gun1.color = new Vector4(0, 0, 0, 0);
+                gun2.color = new Vector4(0, 0, 0, 0);
             }
             else
             {
                 gunNumber++;
+                if(gunNumber == 1)
+                {
+                    gun1.color = new Vector4(1,1,1,1);
+                }
+                if (gunNumber == 2)
+                {
+                    gun2.color = new Vector4(1, 1, 1, 1);
+                }
             }
         }
 
